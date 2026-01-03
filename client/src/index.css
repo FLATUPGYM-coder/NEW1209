@@ -1,0 +1,232 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./styles/animations.css";
+@import "./styles/sakuma-design.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* FLATUPGYM Brand Colors - Empathetic Dynamism */
+  --primary: #FF006E; /* Primary Pink - Women's empowerment, activity */
+  --primary-foreground: #FAFAF8; /* Cream White */
+  --secondary: #00D9FF; /* Electric Blue - Trust, modernity */
+  --secondary-foreground: #1A1F3A; /* Deep Navy */
+  --accent: #FF9A9E; /* Soft Coral - Warmth, accessibility */
+  --accent-foreground: #1A1F3A; /* Deep Navy */
+  --muted: #F0F0F0; /* Soft Gray */
+  --muted-foreground: #666666; /* Medium Gray */
+  --destructive: #EF4444;
+  --destructive-foreground: #FAFAF8;
+  --border: #E5E5E5;
+  --input: #F0F0F0;
+  --ring: #FF006E;
+  --sidebar: #FAFAF8;
+  --sidebar-foreground: #1A1F3A;
+  --sidebar-primary: #FF006E;
+  --sidebar-primary-foreground: #FAFAF8;
+  --sidebar-accent: #00D9FF;
+  --sidebar-accent-foreground: #1A1F3A;
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #FF006E;
+  
+  /* Chart colors */
+  --chart-1: #FF006E;
+  --chart-2: #00D9FF;
+  --chart-3: #FF9A9E;
+  --chart-4: #1A1F3A;
+  --chart-5: #F0F0F0;
+  
+  --radius: 0.65rem;
+  --background: #FAFAF8;
+  --foreground: #1A1F3A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1F3A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1F3A;
+}
+
+.dark {
+  --primary: #FF006E;
+  --primary-foreground: #1A1F3A;
+  --secondary: #00D9FF;
+  --secondary-foreground: #FAFAF8;
+  --background: #0F1419;
+  --foreground: #FAFAF8;
+  --card: #1A1F3A;
+  --card-foreground: #FAFAF8;
+  --popover: #1A1F3A;
+  --popover-foreground: #FAFAF8;
+  --muted: #2D3142;
+  --muted-foreground: #A0A0A0;
+  --border: #2D3142;
+  --input: #2D3142;
+  --ring: #FF006E;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  
+  /* Typography - Poppins for headings, Noto Sans JP for body */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply font-bold;
+  }
+  
+  h1 {
+    @apply text-5xl md:text-6xl font-extrabold leading-tight;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-5xl font-bold leading-tight;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+  
+  h4 {
+    @apply text-xl font-semibold;
+  }
+  
+  p {
+    @apply text-base leading-relaxed;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* FLATUPGYM Custom Components */
+  
+  /* Glowing Accent Line */
+  .glow-accent-line {
+    @apply h-1 bg-gradient-to-r from-[#FF006E] via-[#FF9A9E] to-[#00D9FF] rounded-full;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+  }
+  
+  /* CTA Button - Primary */
+  .btn-cta {
+    @apply px-8 py-4 bg-gradient-to-r from-[#FF006E] to-[#FF9A9E] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Floating Card */
+  .floating-card {
+    @apply bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:translate-y-[-8px];
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#FF006E] via-[#FF9A9E] to-[#00D9FF] bg-clip-text text-transparent;
+  }
+  
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
+
+/* Google Fonts - Poppins & Noto Sans JP */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --font-poppins: 'Poppins', sans-serif;
+    --font-noto: 'Noto Sans JP', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-noto);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins);
+  }
+}
+
+@layer utilities {
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+}
